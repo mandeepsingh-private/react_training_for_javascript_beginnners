@@ -1,0 +1,77 @@
+<!-- STATELESS component-->
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- STATELESS component-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Boiler Plate Code</title>
+    <!--https://github.com/robgmerrill/hello-react-->
+</head>
+
+<body>
+
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+    <div id="app">React has not rendered yet</div>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+    var FamilyList = function(props) {
+        //assign incoming property into a variable to avoid writing too many times "props"
+        var personsList = props.siblingsArray;
+        
+        // function to extract and create person names list from incoming "dict" using map function
+        var getOneItem = function(person){
+            return <div key={person.id}> 
+                        {person.name}
+                    </div>
+        }
+        
+        // call map to get list from dict
+        var personListOfitems = personsList.map(getOneItem)
+
+        //render list to front end
+        return <div>{personListOfitems}</div>
+    }
+
+    //Alternate shorter syntax FamilyList method with less code
+    function FamilyListAlternate(props) {
+        return(
+            <div>{props.siblingsArray.map(function(person){
+                return <div key={person.id}> 
+                        {person.name}</div>
+                })}</div>
+        );
+    }
+
+
+    // ARRAY OF OBJECTS - 3 PROPS (ID, NAME AND FEMALE) 3 VALUES (NUMBER, STRING, BOOLEAN)
+    var siblingsArray = [
+    {id: 1, name: 'Chris', female: false}, 
+    {id: 2, name: 'Jeff', female: false},
+    {id: 3, name: 'Julie', female: true}, 
+    {id: 4, name: 'Jessica', female: true}];
+
+
+    ReactDOM.render(
+      <div>
+          <FamilyList siblingsArray={siblingsArray} />
+          <FamilyListAlternate siblingsArray={siblingsArray} />
+      </div>
+      ,
+      document.getElementById("app")
+    );
+  </script>
+
+</body>
+
+</html>

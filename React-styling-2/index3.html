@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stateless Functional Component</title>
+    <!-- React Library -->
+    <script src="https://unpkg.com/react@16.5.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.development.js"></script>
+    <!-- Babel Library -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Bootstrap Libraries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>React has not rendered yet</h1>
+    </div>
+    <script type="text/babel">
+
+
+    // component ( become tags) the case is first letter each word capitalized
+    var ColorSpectrum = function(){
+        return(
+            <h1>Red, green, blue, yellow, orange</h1>
+        );
+    };
+    class ColorDisplay extends React.Component {
+      render(){
+        var displayStyle = {
+          height:100,
+          width:100,
+          backgroundColor:this.props.color
+        }
+        return(
+          <div style={displayStyle}> 
+            {this.props.name}
+          </div>
+        );
+      }
+    }
+    var location_to_render = document.getElementById('app');
+
+    ReactDOM.render(
+        <div>
+        <ColorSpectrum/>
+        <ColorDisplay color="Red" name="Red" />
+        <ColorDisplay color="Green" name="Green" />
+        <ColorDisplay color="Blue" name="Blue" />
+        <ColorDisplay color="Yellow" name="Yellow" />
+        <ColorDisplay color="Orange" name="Orange" />
+        <ColorDisplay color="Violet" name="Violet" />
+        <ColorDisplay color="Indigo" name="Indigo" />
+        </div>,
+        location_to_render
+    );
+    </script>
+</body>
+
+</html>

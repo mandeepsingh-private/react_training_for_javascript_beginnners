@@ -1,0 +1,123 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Meal Voter App</title>
+    <!-- Bootstrap Libraries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/v4-shims.css">
+</head>
+
+<body>
+
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+    <div id="app">React has not rendered yet</div>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+        var dishStyle = {
+        display:'inline-block',
+        margin:20,
+                height: 600,
+                width: 300,
+                padding: 0,
+                backgroundColor: "white",
+                WebkitFilter: "drop-shadow(16px 16px 10px rgba(0,0,0,0.9))",
+                filter: "drop-shadow(16px 16px 10px rgba(0,0,0,0.9))"
+            }
+            
+        // CREATE CLASS COMPONENT
+        class DinnerVote extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    vote:0
+            };
+            //this.onButtonClick = this.onButtonClick.bind(this);
+        }
+
+        add = ()=>{
+            this.setState({
+               vote: (this.state.vote + 1)
+            });
+        }
+        subtract = ()=>{
+            this.setState({
+               vote: (this.state.vote - 1)
+            });
+        }
+            render(){
+                var dishPicStyle = {
+                    height: 200,
+                    width: 200,
+                    marginLeft: 50,
+                    marginTop: 20
+
+                    }
+                var dishHeadingStyle={
+                    marginLeft: 60
+                }
+                var dishCountStyle={
+                    marginLeft: 150
+                }
+
+                return(
+                    <div style={dishStyle}>
+                        <img src={this.props.img} style={dishPicStyle}/>
+                        <h1 className="text-primary" style={dishHeadingStyle}>Dinner Time</h1>
+                        <h3 style={dishHeadingStyle}> Vote here if you want this</h3>
+                        <button className="btn-success btn-sm" onClick={()=> this.add()}
+                            style={dishCountStyle}> 
+                                +1    
+                        </button>
+
+           
+                        <h3 style={dishHeadingStyle}> Vote here if you do not want this</h3>
+                       
+                        <button className="btn-danger btn-sm" onClick={()=> this.subtract()}
+                              style={dishCountStyle}> 
+                                -1   
+                            </button>
+                        <h3 style={dishHeadingStyle}> Total Votes {this.state.vote}</h3>
+                   </div>
+                )
+            };
+        };
+
+
+
+
+        //https://www.pexels.com/photo/cooked-food-704569/
+    ReactDOM.render(
+        <div>
+            <DinnerVote img="https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg"/>
+            <DinnerVote img="https://static.pexels.com/photos/58722/pexels-photo-58722.jpeg"/>
+            <DinnerVote img="https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg"/>
+      </div>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+
+</html>

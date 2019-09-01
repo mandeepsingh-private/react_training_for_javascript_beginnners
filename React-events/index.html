@@ -1,0 +1,76 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Boiler Plate Code</title>
+    <!-- Bootstrap Libraries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+    <div id="app">React has not rendered yet</div>
+
+    <!-- JAVASCRIPT event handler onClick -->
+    <script type="text/babel">
+
+    class Note extends React.Component{
+        
+        handleButtonEdit = function(){
+            alert("You pressed edit button");
+        }
+
+        handleButtonDelete = function(){
+            alert("You pressed delete");
+        }
+        
+        render(){
+            console.log(this);
+            return(
+                <div>
+                    <div className="row">
+                        <div className="col-md-3">
+                            <h1>Note taker app</h1> <br/>
+                        </div>
+                    </div>
+                    <div className="row ">
+                        <div className="col-md-3">
+                            <button className="btn-primary btn-lg" onClick={this.handleButtonEdit}> edit note </button>
+                        </div>
+                        <div className="col-md-3">
+                            <button className="btn-primary btn-lg" onMouseOver={this.handleButtonDelete}> delete note </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+      <Note />,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+
+</html>

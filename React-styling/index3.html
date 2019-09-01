@@ -1,0 +1,80 @@
+<!-- CLASS with STATE component-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stateless Functional Component</title>
+    <!-- React Library -->
+    <script src="https://unpkg.com/react@16.5.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.5.0/umd/react-dom.development.js"></script>
+    <!-- Babel Library -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="main2.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>React has not rendered yet</h1>
+    </div>
+    <script type="text/babel">
+
+    var data_to_render = <div>
+        <h1>Shakesphere</h1>
+        <p>Shakesphere tolstoy paragraph</p>
+        </div>;
+    // CREATE CLASS COMPONENT
+    class Shapes extends React.Component{
+        render(){
+            return(
+                <h1>Circle, Square, Rectangle</h1>
+            )
+        };
+    };
+    class Square extends React.Component{
+        render(){
+            return(
+                <h1 className="square"></h1>
+            )
+        };
+    };
+    class Circle extends React.Component{
+        render(){
+            return(
+                <h2 className="circle"></h2>
+            )
+        };
+    };
+
+    class Rectangle extends React.Component{
+ 
+        render(){
+            var rectangleStyle = {    
+            width: 200,
+            height: 100,
+            background: "red"
+            }   
+            return(
+                <h2 style={rectangleStyle}></h2>
+            )
+        };
+    };
+    
+    var location_to_render = document.getElementById('app');
+
+    ReactDOM.render(
+        <div>
+            <Shapes/>
+            <Square/>
+            <Circle/>
+            <Rectangle/>
+        </div>,
+        location_to_render
+    );
+    </script>
+</body>
+
+</html>
