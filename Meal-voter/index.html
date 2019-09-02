@@ -51,20 +51,20 @@
                 super(props);
                 this.state = {
                     vote:0
-            };
+                };
             //this.onButtonClick = this.onButtonClick.bind(this);
-        }
+            }
 
-        add = ()=>{
-            this.setState({
-               vote: (this.state.vote + 1)
-            });
-        }
-        subtract = ()=>{
-            this.setState({
-               vote: (this.state.vote - 1)
-            });
-        }
+            add = ()=>{
+                this.setState({
+                vote: (this.state.vote + 1)
+                });
+            }
+            subtract = ()=>{
+                this.setState({
+                vote: (this.state.vote - 1)
+                });
+            }
             render(){
                 var dishPicStyle = {
                     height: 200,

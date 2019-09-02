@@ -1,0 +1,122 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>User Registration Form</title>
+    <!-- Bootstrap Libraries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/v4-shims.css">
+</head>
+
+<body>
+
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+    <div id="app">React has not rendered yet</div>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+
+    // CREATE CLASS COMPONENT
+    class UserRegistrationForm extends React.Component{
+        constructor(props){
+                super(props);
+                this.state = {
+                    firstName:"-",
+                    lastName: "-",
+                    fullName: " "
+                };
+            //#########################################################
+            // Boiler plate code in react to enable functionsin REACT
+            //########################################################
+            //this.onButtonClick = this.onButtonClick.bind(this);
+            this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
+            this.handleChangeLastName = this.handleChangeLastName.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+            }
+        handleChangeFirstName(event){
+            this.setState({
+                firstName: event.target.value
+            });
+        }
+        handleChangeLastName(event){
+         this.setState({
+                lastName: event.target.value
+            });
+        }
+        handleSubmit(event){
+            this.setState({
+                fullName: (" Your Name is " +this.state.firstName + " " +this.state.lastName)
+            });
+            event.preventDefault()
+        }
+        
+
+        render(){
+            return(
+                <div  className="col-md-12">
+                    {/* Row 1  ####################################################################### */}
+                     <div className="row">
+                        <h1>User Registration form </h1>
+                    </div>
+                    <form onSubmit={this.handleSubmit}>
+                        {/* Row 2  ####################################################################### */}
+                        <div className="row">
+                            {/*<!-- col 1  --------------------------------->*/}
+                            <div className="col-auto  col-md-3">
+                                <div className="form-group">
+                                    <label htmlFor="firstName">1. First Name</label>
+                                    <input type="text" className="form-control" name="firstName" id="firstName" aria-describedby="firstName_help" value={this.state.firstName} onChange={this.handleChangeFirstName}
+                                        />
+                                    <small id="firstName_help" className="form-text text-muted">please enter the first name: <strong>{this.state.firstName}</strong></small>
+                                </div>
+                            </div>{/* end of col1*/}
+                                                        {/*<!-- col 1  --------------------------------->*/}
+                            <div className="col-auto  col-md-3 ">
+                                <div className="form-group">
+                                    <label htmlFor="lastName">1. Last Name</label>
+                                    <input type="text" className="form-control" name="lastName" id="lastName" aria-describedby="lastName_help" value={this.state.lastName} onChange={this.handleChangeLastName}
+                                        />
+                                    <small id="lastName_help" className="form-text text-muted">please enter the last name: <strong>{this.state.lastName}</strong></small>
+                                </div>
+                            </div>{/* end of col1*/}
+                        </div> {/* end of row 2*/}
+                        <input type="submit"  value="submit" className="btn-primary btn"/>
+                    </form>
+                    <hr/>
+                    <h1>{this.state.fullName}</h1>
+                </div>
+            )
+        };
+        }
+
+    ReactDOM.render(
+      <div>
+          <UserRegistrationForm />
+     </div>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+
+</html>
