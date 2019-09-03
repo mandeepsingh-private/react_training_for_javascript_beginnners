@@ -19,52 +19,48 @@
   <div id="app">React has not rendered yet</div>
 
   <!-- JAVASCRIPT -->
-    <script type="text/babel">
-
-    // CREATE CLASS COMPONENT
-    class App extends React.Component{
-        constructor(props){
-                super(props);
-                this.state = {
-                  items: []
-                };
-            //#########################################################
-            // Boiler plate code in react to enable functionsin REACT
-            //########################################################
-            //this.onButtonClick = this.onButtonClick.bind(this);
-          }
-
-        // AJAX call to SWAPI API
-        ComponentDidMount(){
-          fetch('http://swapi.co/api/people/')
-          .then(function(response){
-            return response.json()
-          }).then(responseData =>{
-            this.setState({
-              items: responseData.results
-            }).catch(error=>{
-              console.log('Fetching and parsing error',error);
-            })
-          })
-        }
-
-        render(){
-          let items = this.state.items;
-          console.log("ITEMS are ",items);
-            return (
-              <div>
-              </div>
-              );
-          }
-        }
-            
-
-
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          items: []
+        };
+      }
+      // componentDidMount
+      // most common use case: starting AJAX calls to load data for your component
+      // can call setState
+      componentDidMount() {
+        fetch('http://swapi.co/api/people/',{method:'no-cors'})
+        // .then(function(response) {
+        //   return response.json()
+        // })
+        .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            items: responseData.results
+          });
+        })
+        .catch(error => {
+          console.log('Fetching and parsing data error', error);
+        });
+      }
+      render() {
+        let items = this.state.items;
+        console.log(items);
+        return(
+          <div>
+            {items.map(function(item) {
+              return <h4 key={item.name}>{item.name} has an eye color of {item.eye_color}</h4>
+            })}
+          </div>
+        );
+      }
+    }
     ReactDOM.render(
       <App/>,
       document.getElementById("app")
     );
-
   </script>
 
 </body>
